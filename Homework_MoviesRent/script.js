@@ -43,5 +43,5 @@ function findMovie() {
 
 btn.addEventListener('click', function() {
     findMovie();
-    searchBar.value = '';
+    // searchBar.value = '';
 })
