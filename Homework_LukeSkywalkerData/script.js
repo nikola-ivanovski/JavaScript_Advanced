@@ -45,15 +45,15 @@ function manageData(data) {
         let eyeColor = document.createElement('th');
         let hairColor = document.createElement('th');
         
-        heightHeader.innerHTML = 'Height'
-        birthYear.innerHTML = 'Birth Year'
-        eyeColor.innerHTML = 'Eye Color'
-        hairColor.innerHTML = 'Hair Color'
+        heightHeader.innerText = 'Height';
+        birthYear.innerText = 'Birth Year';
+        eyeColor.innerText = 'Eye Color';
+        hairColor.innerText = 'Hair Color';
         
-        row.appendChild(heightHeader)
-        row.appendChild(birthYear)
-        row.appendChild(eyeColor)
-        row.appendChild(hairColor)
+        row.appendChild(heightHeader);
+        row.appendChild(birthYear);
+        row.appendChild(eyeColor);
+        row.appendChild(hairColor);
 
         for (let j=0; j < 1; j++ ) {
             let column1 = document.createElement('td');
