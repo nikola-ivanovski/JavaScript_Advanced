@@ -11,26 +11,43 @@ console.log('test');
 
 let movies = ['Nemo', 'Star Wars: Return of the Jedi', 'Avatar', 'Die Hard', 'Who Am I', 'Now You See Me'];
 
-let searchBar = document.getElementById('searchBar').value;
+let searchBar = document.getElementById('searchBar');
 let btn = document.querySelector('#btn');
 let result = document.querySelector('#result')
 let found = false;
 
+
+
 function findMovie() {
     let announcement = document.createElement('h1');
-    for (let i=0; i < movies.length; i++) {
-        let lowerCaseTitle = movies[i].toLowerCase();
-        if(lowerCaseTitle === searchBar) {
-            console.log(movies[i]);
-            console.log(searchBar);
-            found = true;
-            break;
-        } else {
-            console.log(searchBar);
-            console.log('Movie not found');
-            break;
+    searchBar.innerHTML = '';
+    
+    function strings(stringInput, array) {
+        if (stringInput.toLowerCase() === array.toLowerCase()) {
+            return true;
         }
     }
+
+    for (let movie of movies) {
+        if(strings(searchBar.value, movie)) {
+            found = true;
+            // console.log(searchBar.value)
+        }
+    }
+
+    // Wrong
+    // for (let i=0; i < movies.length; i++) {
+    //     let lowerCaseTitle = movies[i].toLowerCase();
+    //     if(searchBarOne.value.toLowerCase() === lowerCaseTitle) {
+    //         found = true;
+    //         break;
+    //     } else {
+    //         console.log('Movie not found');
+    //         break;
+    //     }
+    // }
+
+
     if (found) {
         result.appendChild(announcement).innerHTML = 'The movie can be rented';
         result.appendChild(announcement).style.color = 'green';
@@ -41,7 +58,7 @@ function findMovie() {
 }
 
 
-btn.addEventListener('click', function() {
+btn.addEventListener('click', () => {
     findMovie();
-    // searchBar.value = '';
+    searchBar.value = '';
 })
