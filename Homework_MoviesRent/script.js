@@ -22,6 +22,7 @@ function findMovie() {
     let announcement = document.createElement('h1');
     searchBar.innerHTML = '';
     
+    // Right
     function strings(stringInput, array) {
         if (stringInput.toLowerCase() === array.toLowerCase()) {
             return true;
@@ -31,14 +32,14 @@ function findMovie() {
     for (let movie of movies) {
         if(strings(searchBar.value, movie)) {
             found = true;
-            // console.log(searchBar.value)
+            console.log(searchBar.value)
         }
     }
 
     // Wrong
     // for (let i=0; i < movies.length; i++) {
     //     let lowerCaseTitle = movies[i].toLowerCase();
-    //     if(searchBarOne.value.toLowerCase() === lowerCaseTitle) {
+    //     if(searchBar.value.toLowerCase() === lowerCaseTitle) {
     //         found = true;
     //         break;
     //     } else {
