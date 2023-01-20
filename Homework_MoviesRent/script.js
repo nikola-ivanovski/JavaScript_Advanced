@@ -18,23 +18,29 @@ let found = false;
 
 
 
-function findMovie() {
+function findMovie(input, array) {
     let announcement = document.createElement('h1');
     searchBar.innerHTML = '';
     
-    // Right
-    function strings(stringInput, array) {
-        if (stringInput.toLowerCase() === array.toLowerCase()) {
-            return true;
+    for (let i=0; i < movies.length; i++) {
+        if(input.value.toLowerCase() === movies[i].toLowerCase()) {
+            found = true;
         }
     }
 
-    for (let movie of movies) {
-        if(strings(searchBar.value, movie)) {
-            found = true;
-            console.log(searchBar.value)
-        }
-    }
+    // Example
+    // function strings(stringInput, array) {
+    //     if (stringInput.toLowerCase() === array.toLowerCase()) {
+    //         return true;
+    //     }
+    // }
+
+    // for (let movie of movies) {
+    //     if(strings(searchBar.value, movie)) {
+    //         found = true;
+    //         console.log(searchBar.value)
+    //     }
+    // }
 
     // Wrong
     // for (let i=0; i < movies.length; i++) {
@@ -60,6 +66,6 @@ function findMovie() {
 
 
 btn.addEventListener('click', () => {
-    findMovie();
+    findMovie(searchBar, movies);
     searchBar.value = '';
 })
