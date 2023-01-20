@@ -60,12 +60,12 @@ function manageData(data) {
             let column2 = document.createElement('td');
             let column3 = document.createElement('td');
             let column4 = document.createElement('td');
-            //const lukeText = document.createTextNode(`Height: ${data.height}, Birth Year: ${data.birth_year}, Eye Color: ${data.eye_color}, Hair Color: ${data.hair_color}`);
+            
             column1.innerHTML = data.height;
             column2.innerHTML = data.birth_year;
             column3.innerHTML = data.eye_color;
             column4.innerHTML = data.hair_color;
-            // j.appendChild(column1);
+
             rowSecond.appendChild(column1);
             rowSecond.appendChild(column2);
             rowSecond.appendChild(column3);
