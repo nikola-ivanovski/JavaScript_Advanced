@@ -28,20 +28,6 @@ function findMovie(input, array) {
         }
     }
 
-    // Example
-    // function strings(stringInput, array) {
-    //     if (stringInput.toLowerCase() === array.toLowerCase()) {
-    //         return true;
-    //     }
-    // }
-
-    // for (let movie of movies) {
-    //     if(strings(searchBar.value, movie)) {
-    //         found = true;
-    //         console.log(searchBar.value)
-    //     }
-    // }
-
     // Wrong
     // for (let i=0; i < movies.length; i++) {
     //     let lowerCaseTitle = movies[i].toLowerCase();
