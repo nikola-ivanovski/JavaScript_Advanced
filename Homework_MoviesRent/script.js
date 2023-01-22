@@ -25,6 +25,7 @@ function findMovie(input, array) {
     for (let i=0; i < movies.length; i++) {
         if(input.value.toLowerCase() === movies[i].toLowerCase()) {
             found = true;
+            break;
         }
     }
 
