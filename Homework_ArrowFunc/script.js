@@ -15,7 +15,7 @@ console.log('Connected');
 let btn = document.getElementById('btn');
 let text = document.getElementById('text');
 
-let changeTextColor = (element, color = 'black') => {
+let changeTextColor = (element, color = "black") => {
     let colorPicker = document.getElementById('colorPicker');
     
     color = colorPicker.value;
@@ -35,7 +35,7 @@ let changeTextSize = (element, textSize = 24) => {
     element.style.fontSize = textSize;
     console.log('textSize value:', textSize)
 
-    if(text.value.length === 0) {
+    if(text.value === "") {
         text.value = 24;
     }
 }
@@ -47,6 +47,6 @@ btn.addEventListener('click', () => {
     let header = document.createElement('h1');
     header.innerText = 'Heeeeellloooo from G5. This is Nikola Ivanovski.'
     text.appendChild(header);
-    changeTextColor(header);
+    changeTextColor(header, colorPicker.value);
     changeTextSize(header, text.value);
 })
