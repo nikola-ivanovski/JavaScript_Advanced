@@ -21,10 +21,10 @@ let changeTextColor = (element, color = 'black') => {
     color = colorPicker.value;
     
     element.style.color = color;
-        
-    if(color === undefined) {
-        color = 'black';
-    }
+       
+    // if(color === undefined) {
+    //     color = 'black';
+    // }
 }
 
 let changeTextSize = (element, textSize = 24) => {
@@ -33,17 +33,20 @@ let changeTextSize = (element, textSize = 24) => {
     textSize = text.value + 'px';
 
     element.style.fontSize = textSize;
+    console.log('textSize value:', textSize)
 
-    if(textSize === undefined) {
-        textSize = 24;
+    if(text.value.length === 0) {
+        text.value = 24;
     }
 }
 
 
 btn.addEventListener('click', () => {
+    text.innerHTML = "";
+    text.style.fontSize = "";
     let header = document.createElement('h1');
     header.innerText = 'Heeeeellloooo from G5. This is Nikola Ivanovski.'
     text.appendChild(header);
     changeTextColor(header);
-    changeTextSize(header);
+    changeTextSize(header, text.value);
 })
