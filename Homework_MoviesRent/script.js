@@ -53,6 +53,7 @@ function findMovie(input, array) {
 
 
 btn.addEventListener('click', () => {
+    result.innerHTML = "";
     findMovie(searchBar, movies);
     searchBar.value = '';
 })
