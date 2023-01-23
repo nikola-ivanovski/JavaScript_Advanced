@@ -35,15 +35,17 @@ let changeTextSize = (element, textSize = 24) => {
     element.style.fontSize = textSize;
     console.log('textSize value:', textSize)
 
-    if(text.value === "") {
-        text.value = 24;
+    if(textSize === "") {
+        element.style.fontSize = 24 + 'px';
+    } else {
+        element.style.fontSize = textSize;
     }
 }
 
 
 btn.addEventListener('click', () => {
     text.innerHTML = "";
-    text.style.fontSize = "";
+    text.value = "";
     let header = document.createElement('h1');
     header.innerText = 'Heeeeellloooo from G5. This is Nikola Ivanovski.'
     text.appendChild(header);
