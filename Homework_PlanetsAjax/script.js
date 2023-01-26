@@ -63,7 +63,7 @@ let showNext = (data) => {
     let buttonPrev = document.createElement('button')
     buttonNext.innerHTML = 'Next 10';
     buttonPrev.innerHTML = 'Prev 10';
-
+    
     nextTen.appendChild(buttonNext)
     
 
@@ -84,7 +84,11 @@ let showNext = (data) => {
         })
     })
 
-    buttonPrev.onclick = callMePlanets(data);
+    buttonPrev.onclick = function() {
+        callMePlanets(data)
+        buttonNext.style.display = 'block';
+        buttonPrev.style.display = 'none';
+    };
 }
 
 let nextTenData = data => {
