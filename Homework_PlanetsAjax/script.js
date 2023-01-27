@@ -63,9 +63,10 @@ let showNext = (data) => {
     let buttonPrev = document.createElement('button')
     buttonNext.innerHTML = 'Next 10';
     buttonPrev.innerHTML = 'Prev 10';
-    
+    buttonNext.className = 'btn';
+    buttonPrev.className = 'btn';
+
     nextTen.appendChild(buttonNext)
-    
 
     buttonNext.addEventListener('click', function() {
         fetch('https://swapi.dev/api/planets/?page=2')
@@ -73,7 +74,7 @@ let showNext = (data) => {
             return res.json();
         })
         .then(function (data) {
-            console.log(data.results)
+            // console.log(data.results)
             nextTenData(data);
             nextTen.appendChild(buttonPrev);
             buttonPrev.style.display = 'block';
