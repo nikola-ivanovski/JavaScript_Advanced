@@ -54,12 +54,12 @@ function Student(firstName, lastName, age, completedSubjects = []) {
     this.startAcademy = function (academy) {
         this.Academy = academy; // kreira nov key: value pair namesto da go apdejtira academy
         // academy.students.push(this); // vrakja error - undefined
-        console.log(Academy.students)
+        console.log(academy.students)
     }
     this.startSubject = function(subject) {
-        console.log(Academy)
+        // console.log(this.Academy) // vrakja undefined
         Academy.subjects = subject;
-        if (Academy && Academy.subjects.includes(subject)) { // isto vrakja error - undefined
+        if (this.Academy && this.Academy.subjects.includes(subject)) { // isto vrakja error - undefined
             
             this.currentSubject = subject;
             if (this.currentSubject) {
