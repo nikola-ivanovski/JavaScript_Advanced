@@ -22,7 +22,8 @@ newAcademy.printSubjects(); // React.js, Node.js, Angular.js, Javascript
 console.log(newAcademy.numberOfClasses)
 
 
-function Subject(title, isElective = true, students) {
+function Subject(name, students, subjects, start, end, title, isElective = true) {
+    Object.setPrototypeOf(this, new Academy(name, students, subjects, start, end));
     this.title = title === undefined ? "unnamed" : title;
     this.numberOfClasses = 10;
     this.isElective = isElective;
@@ -44,7 +45,8 @@ newSubject.academy[newAcademy];
 console.log(newSubject.academy); // go vrakja samiot template, kako da go vrakja newAcademy objektot??
 
 
-function Student(firstName, lastName, age, completedSubjects = []) {
+function Student(name, students, subjects, start, end, title, isElective = true, firstName, lastName, age, completedSubjects = []) {
+    Object.setPrototypeOf(this, new Subject(name, students, subjects, start, end, title, isElective = true))
     this.firstName = firstName === undefined ? "unnamed" : firstName;
     this.lastName = lastName === undefined ? "unnamed" : lastName;
     this.age = age;
@@ -53,7 +55,7 @@ function Student(firstName, lastName, age, completedSubjects = []) {
     this.currentSubject = null;
     this.startAcademy = function (academy) {
         this.Academy = academy; // kreira nov key: value pair namesto da go apdejtira academy
-        // academy.students.push(this); // vrakja error - undefined
+        academy.students.push(this); // vrakja error - undefined
         console.log(academy.students)
     }
     this.startSubject = function(subject) {
