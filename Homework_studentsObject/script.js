@@ -39,19 +39,19 @@ function Student(firstName, lastName, age) {
     this.currentSubject = null;
     this.startAcademy = function(academy) {
         this.academy = academy;
-        let arr = Array.from(academy.students);
+        let arr = Array.from(academy.students); // tuka pretvoram vo array za da raboti .push()
         arr.push(this);
         console.log(academy)
     }
     this.startSubject = function(subject) {
-        if (this.academy && String(this.academy.subjects).indexOf(subject) === -1) { 
+        if (this.academy && String(this.academy.subjects).indexOf(subject) === -1) { // tuka go smeniv namesto includes go staviv indexOf i mu staviv da bide String
             this.currentSubject = subject;
             
             if (this.currentSubject) {
                 this.completedSubjects.push(this.currentSubject);
             }
             console.log(subject);
-            let arr = Array.from(subject.students)
+            let arr = Array.from(subject.students); // isto taka i tuka pretvoram vo niza za da raboti push()
             arr.push(this); 
         } else {
             console.error('Current subject not found')
