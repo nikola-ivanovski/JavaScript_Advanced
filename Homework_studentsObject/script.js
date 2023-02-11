@@ -1,6 +1,6 @@
 console.log('Connected');
 
-function Academy(name, students, subjects, start, end) {
+function Academy(name, students = [], subjects = [], start, end) {
     this.name = name === undefined ? "unnamed" : name;
     this.students = students;
     this.subjects = subjects;
@@ -15,19 +15,11 @@ function Academy(name, students, subjects, start, end) {
     };
 };
 
-let newAcademy = Object.create(new Academy('SEDC', ['Nikola', 'Dragisha', 'Mice', 'Dimitar'], ['React.js', 'Node.js', 'Angular.js', 'JavaScript'], '14.05', '22.2'));
-console.log('Academy object',newAcademy);
-newAcademy.printStudents(); // Nikola, Dragisha, Mice, Dimitar
-newAcademy.printSubjects(); // React.js, Node.js, Angular.js, Javascript
-console.log(newAcademy.numberOfClasses)
-
-
-function Subject(name, students, subjects, start, end, title, isElective = true) {
-    Object.setPrototypeOf(this, new Academy(name, students, subjects, start, end));
+function Subject(title, isElective = true, academy, students) {
     this.title = title === undefined ? "unnamed" : title;
     this.numberOfClasses = 10;
     this.isElective = isElective;
-    this.academy =  Academy;
+    this.academy =  academy;
     this.students = students;
     this.overrideClasses = function(num) {
         if (num >= 3) {
@@ -38,45 +30,39 @@ function Subject(name, students, subjects, start, end, title, isElective = true)
     };
 };
 
-let newSubject = Object.create(new Subject('React.js', false, ['Nikola', 'Dragisha', 'Denis', 'Hristijan']));
-console.log('Subject object',newSubject);
-newSubject.overrideClasses(4);
-newSubject.academy[newAcademy];
-console.log(newSubject.academy); // go vrakja samiot template, kako da go vrakja newAcademy objektot??
-
-
-function Student(name, students, subjects, start, end, title, isElective = true, firstName, lastName, age, completedSubjects = []) {
-    Object.setPrototypeOf(this, new Subject(name, students, subjects, start, end, title, isElective = true))
+function Student(firstName, lastName, age) {
     this.firstName = firstName === undefined ? "unnamed" : firstName;
     this.lastName = lastName === undefined ? "unnamed" : lastName;
     this.age = age;
-    this.completedSubjects = completedSubjects;
+    this.completedSubjects = [];
     this.academy = null;
     this.currentSubject = null;
-    this.startAcademy = function (academy) {
-        this.Academy = academy; // kreira nov key: value pair namesto da go apdejtira academy
-        academy.students.push(this); // vrakja error - undefined
-        console.log(academy.students)
+    this.startAcademy = function(academy) {
+        this.academy = academy;
+        let arr = Array.from(academy.students);
+        arr.push(this);
+        console.log(academy)
     }
     this.startSubject = function(subject) {
-        // console.log(this.Academy) // vrakja undefined
-        Academy.subjects = subject;
-        if (this.Academy && this.Academy.subjects.includes(subject)) { // isto vrakja error - undefined
-            
+        if (this.academy && String(this.academy.subjects).indexOf(subject) === -1) { 
             this.currentSubject = subject;
+            
             if (this.currentSubject) {
                 this.completedSubjects.push(this.currentSubject);
             }
-            console.log(subject); // mi vrakja JavaScript od 79 linija
-            subject.students.push(this); // undefined - ne go naogja od Academy students
+            console.log(subject);
+            let arr = Array.from(subject.students)
+            arr.push(this); 
         } else {
-            console.log('Error: currentSubject')
+            console.error('Current subject not found')
         }
     };
 };
 
-let newStudent = Object.create(new Student('Nikola', 'Ivanovski', 26, ['React','Node', 'Angular']));
+let academyOne = Object.create(new Academy('SEDC', 30, 10, '17.10.2022', '12.10.2023'));
+let student = Object.create(new Student('Nikola', 'Ivanovski', 26));
+let subject = Object.create(new Subject('JavaScript', true, 'SEDC', 30));
 
-// newStudent.startAcademy('SEDC');
-newStudent.startSubject('JavaScript')
-console.log(newStudent)
+student.startAcademy(academyOne);
+student.startSubject(subject);
+subject.overrideClasses(4)
