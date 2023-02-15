@@ -19,7 +19,7 @@ function Subject(title, isElective = true, academy, students) {
     this.title = title === undefined ? "unnamed" : title;
     this.numberOfClasses = 10;
     this.isElective = isElective;
-    this.academy =  academy;
+    this.academy =  Academy;
     this.students = students;
     this.overrideClasses = function(num) {
         if (num >= 3) {
@@ -44,10 +44,10 @@ function Student(firstName, lastName, age) {
         console.log(academy)
     }
     this.startSubject = function(subject) {
-        if (this.academy && String(this.academy.subjects).indexOf(subject) === -1) { // tuka go smeniv namesto includes go staviv indexOf i mu staviv da bide String
+        if (this.academy !== null && String(this.academy.subjects).indexOf(subject) === -1) { // tuka go smeniv namesto includes go staviv indexOf i mu staviv da bide String
             this.currentSubject = subject;
             
-            if (this.currentSubject) {
+            if (this.currentSubject !== null) {
                 this.completedSubjects.push(this.currentSubject);
             }
             console.log(subject);
@@ -61,7 +61,7 @@ function Student(firstName, lastName, age) {
 
 let academyOne = Object.create(new Academy('SEDC', 30, 10, '17.10.2022', '12.10.2023'));
 let student = Object.create(new Student('Nikola', 'Ivanovski', 26));
-let subject = Object.create(new Subject('JavaScript', true, 'SEDC', 30));
+let subject = Object.create(new Subject('JavaScript', true, academyOne, 30));
 
 student.startAcademy(academyOne);
 student.startSubject(subject);
