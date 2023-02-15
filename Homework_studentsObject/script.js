@@ -19,7 +19,7 @@ function Subject(title, isElective = true, academy, students) {
     this.title = title === undefined ? "unnamed" : title;
     this.numberOfClasses = 10;
     this.isElective = isElective;
-    this.academy =  Academy;
+    this.academy =  academy;
     this.students = students;
     this.overrideClasses = function(num) {
         if (num >= 3) {
